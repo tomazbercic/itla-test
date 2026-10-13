@@ -566,3 +566,15 @@ details.arts[open] .hd{display:inline}
 .rot:hover .dots{opacity:.75}
 .dot{width:7px;height:7px;border-color:rgba(255,255,255,.7)}
 .slide-cap{right:max(var(--gut),calc((100% - var(--maxw)) / 2 + var(--gut)))}
+
+/* ---------- phones: compact header, search visible, hero caption below the buttons ---------- */
+@media (max-width:620px){
+  .site-head .in{padding-top:14px;padding-bottom:14px;gap:10px}
+  .nav{gap:8px 14px}
+  .nav .search{display:inline-flex}
+  .home-hero .in,.hero .in{padding-top:36px}
+  .home-hero .eyebrow{font-size:1.15rem}
+  .home-hero.rot .in,.hero.rot .in{padding-bottom:84px}
+  .slide-cap{left:var(--gut);right:var(--gut);max-width:none;text-align:left;bottom:30px}
+  .dots{left:var(--gut);bottom:12px}
+}
