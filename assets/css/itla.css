@@ -123,8 +123,9 @@ section.in+section.in{padding-top:8px}
 .card.feature .card-img{aspect-ratio:auto;height:100%;min-height:320px}
 .card.feature .card-body{padding:28px 30px 22px}
 .card.feature.noimg{display:flex}
-.meta-top{display:flex;gap:12px;align-items:center;font-size:.72rem;font-weight:600;
+.meta-top{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:.72rem;font-weight:600;
   letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.meta-top > span{white-space:nowrap}
 .meta-top .type{color:var(--orange)}
 .meta-top .oa{color:var(--muted);font-weight:500;letter-spacing:.06em;display:inline-flex;align-items:center;gap:6px}
 .meta-top .oa::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green)}
@@ -577,4 +578,26 @@ details.arts[open] .hd{display:inline}
   .home-hero.rot .in,.hero.rot .in{padding-bottom:84px}
   .slide-cap{left:var(--gut);right:var(--gut);max-width:none;text-align:left;bottom:30px}
   .dots{left:var(--gut);bottom:12px}
+}
+
+/* ---------- editorial band (above the article cards of an issue) ---------- */
+.editorial{display:grid;grid-template-columns:minmax(200px,max-content) minmax(0,1fr);gap:32px;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:26px 0 24px;margin:0 0 26px}
+.ed-side{border-right:1px solid var(--line);padding-right:24px}
+.ed-kick{display:block;font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:10px}
+.ed-by{margin:0;font-size:.9rem;line-height:1.55;color:var(--ink-2)}
+.ed-name{display:block;white-space:nowrap}
+.ed-main h3{font-family:var(--serif);font-weight:400;font-size:1.6rem;line-height:1.2;margin:0 0 10px}
+.ed-main h3 a{color:var(--petrol);text-decoration:none}
+.ed-main h3 a:hover{text-decoration:underline}
+.ed-lede{font-family:var(--serif);font-size:1.08rem;line-height:1.65;color:var(--ink-2);margin:0 0 12px;max-width:68ch}
+.ed-more{font-size:.86rem;font-weight:600;color:var(--petrol);text-decoration:none}
+.ed-more:hover{text-decoration:underline}
+@media (max-width:860px){
+  .editorial{grid-template-columns:1fr;gap:12px}
+  .ed-side{border-right:0;padding-right:0;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+  .ed-kick{margin-bottom:0}
+  .ed-main h3{font-size:1.35rem}
+  .ed-lede{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
 }
