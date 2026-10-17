@@ -601,3 +601,8 @@ details.arts[open] .hd{display:inline}
   .ed-main h3{font-size:1.35rem}
   .ed-lede{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
 }
+
+/* editorial at the top of an issue's article list (journal page, Issues archive) */
+details.arts .editorial{background:#fff;border:0;margin:18px 16px 0;padding:22px 26px;max-width:1120px}
+details.arts .editorial .ed-main h3{font-size:1.35rem}
+@media (max-width:860px){details.arts .editorial{margin:14px 12px 0;padding:18px}}
