@@ -186,45 +186,51 @@
   window.addEventListener('load', top);
 })();
 
-/* Report an error: window that sends to a Google Form (no e-mail client needed) */
+/* Windows that send to Google Forms (Report an error, ITLA application form) */
 (function () {
-  var dlg = document.getElementById('report');
-  var btns = document.querySelectorAll('[data-report]');
-  if (!dlg || !btns.length || typeof dlg.showModal !== 'function') {
-    btns.forEach(function (b) { b.hidden = true; });
-    return;
-  }
-  var form = dlg.querySelector('form');
-  var msg = dlg.querySelector('.report-msg');
-  var send = form.querySelector('[type=submit]');
-  btns.forEach(function (b) {
-    b.addEventListener('click', function () {
-      msg.textContent = ''; send.disabled = false; form.hidden = false;
+  var openers = document.querySelectorAll('[data-open]');
+  openers.forEach(function (b) {
+    var dlg = document.getElementById(b.dataset.open);
+    if (!dlg || typeof dlg.showModal !== 'function') {   /* old browser: links keep working, the button hides */
+      if (b.tagName === 'BUTTON') b.hidden = true;
+      return;
+    }
+    b.addEventListener('click', function (e) {
+      e.preventDefault();
+      var form = dlg.querySelector('form');
+      form.hidden = false;
+      dlg.querySelector('.gf-msg').textContent = '';
+      form.querySelector('[type=submit]').disabled = false;
       dlg.showModal();
-      form.elements.text.focus();
+      var first = form.querySelector('textarea, input:not([type=hidden]):not(.hp)');
+      if (first) first.focus();
     });
   });
-  dlg.querySelector('[data-close]').addEventListener('click', function () { dlg.close(); });
-  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var text = form.elements.text.value.trim();
-    if (!text) { form.elements.text.focus(); return; }
-    if (form.elements.website.value) { dlg.close(); return; } /* filled only by bots */
-    var data = new FormData();
-    data.append(dlg.dataset.page, location.href.split('#')[0] + (document.title ? ' | ' + document.title : ''));
-    data.append(dlg.dataset.text, text);
-    data.append(dlg.dataset.email, form.elements.email.value.trim());
-    send.disabled = true; msg.textContent = 'Sending...';
-    fetch(dlg.dataset.action, { method: 'POST', mode: 'no-cors', body: data })
-      .then(function () {
-        msg.textContent = 'Thank you. Your report has been sent to the website editor.';
-        form.elements.text.value = '';
-        setTimeout(function () { if (dlg.open) dlg.close(); }, 2500);
-      })
-      .catch(function () {
-        msg.textContent = 'Sending failed. Please check your connection and try again.';
-        send.disabled = false;
-      });
+  document.querySelectorAll('dialog.gform').forEach(function (dlg) {
+    var form = dlg.querySelector('form');
+    var msg = dlg.querySelector('.gf-msg');
+    var send = form.querySelector('[type=submit]');
+    dlg.querySelector('[data-close]').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      if (form.elements.website && form.elements.website.value) { dlg.close(); return; } /* filled only by bots */
+      var page = form.querySelector('[data-autopage]');
+      if (page) page.value = location.href.split('#')[0] + (document.title ? ' | ' + document.title : '');
+      var data = new FormData(form);
+      data.delete('website');
+      send.disabled = true; msg.textContent = 'Sending...';
+      fetch(dlg.dataset.action, { method: 'POST', mode: 'no-cors', body: data })
+        .then(function () {
+          msg.textContent = dlg.dataset.done;
+          form.reset();
+          setTimeout(function () { if (dlg.open) dlg.close(); }, 3000);
+        })
+        .catch(function () {
+          msg.textContent = 'Sending failed. Please check your connection and try again.';
+          send.disabled = false;
+        });
+    });
   });
 })();

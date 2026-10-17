@@ -613,17 +613,27 @@ details.arts .editorial .ed-main h3{font-size:1.35rem}
   background:rgba(255,255,255,.82);color:var(--petrol);font:500 .74rem/1 var(--sans);padding:7px 11px;cursor:pointer;
   opacity:.55;transition:opacity .2s,background .2s,color .2s;backdrop-filter:blur(4px)}
 .report-btn:hover,.report-btn:focus-visible{opacity:1;background:var(--petrol);color:#fff}
-dialog.report{border:0;border-radius:6px;padding:0;width:min(520px,calc(100vw - 32px));box-shadow:0 10px 40px rgba(0,0,0,.3)}
-dialog.report::backdrop{background:rgba(0,40,60,.45)}
-.report-form{padding:26px 28px;display:flex;flex-direction:column;gap:14px}
-.report-form h3{margin:0;font-family:var(--serif);font-weight:400;font-size:1.5rem;color:var(--petrol)}
-.report-hint{margin:0;font-size:.92rem;color:#555}
-.report-form label{display:flex;flex-direction:column;gap:6px;font-size:.88rem;font-weight:600}
-.report-form label i{font-style:normal;font-weight:400;color:#666}
-.report-form textarea,.report-form input{font:inherit;font-weight:400;border:1px solid #c9cfd3;border-radius:4px;padding:9px 10px;width:100%;box-sizing:border-box}
-.report-form .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
-.report-msg{margin:0;min-height:1.2em;font-size:.9rem;color:var(--petrol)}
-.report-act{display:flex;justify-content:flex-end;gap:10px}
-.report-act .pill{border:0;cursor:pointer}
-.report-act .pill.line{background:#fff;border:1px solid #c9cfd3;color:#333}
+dialog.gform{border:0;border-radius:6px;padding:0;width:min(520px,calc(100vw - 32px));max-height:calc(100vh - 40px);box-shadow:0 10px 40px rgba(0,0,0,.3)}
+dialog.gform.wide{width:min(760px,calc(100vw - 32px))}
+dialog.gform::backdrop{background:rgba(0,40,60,.45)}
+dialog.gform form{padding:26px 28px 0;display:flex;flex-direction:column;gap:14px}
+dialog.gform h3{margin:0;font-family:var(--serif);font-weight:400;font-size:1.5rem;color:var(--petrol)}
+.gf-hint{margin:0;font-size:.92rem;color:#555}
+.gf-note{margin:0;font-size:.8rem;color:#666}
+.gf-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
+.gf-grid > label:has(textarea),.gf-grid > fieldset{grid-column:1 / -1}
+@media (max-width:600px){.gf-grid{grid-template-columns:1fr}}
+dialog.gform label{display:flex;flex-direction:column;gap:6px;font-size:.88rem;font-weight:600}
+dialog.gform i{font-style:normal;font-weight:400;color:#666}
+dialog.gform textarea,dialog.gform input[type=text],dialog.gform input[type=email]{font:inherit;font-weight:400;border:1px solid #c9cfd3;border-radius:4px;padding:9px 10px;width:100%;box-sizing:border-box}
+dialog.gform fieldset{border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 22px}
+dialog.gform fieldset:has(input[type=checkbox]){flex-direction:column}
+dialog.gform legend{font-size:.88rem;font-weight:600;margin-bottom:6px;padding:0}
+dialog.gform label.opt{flex-direction:row;align-items:flex-start;gap:8px;font-weight:400}
+dialog.gform label.opt input{margin-top:3px}
+dialog.gform .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.gf-msg{margin:0;min-height:1.2em;font-size:.9rem;color:var(--petrol)}
+.gf-act{display:flex;justify-content:flex-end;gap:10px;position:sticky;bottom:0;background:#fff;padding:12px 0 22px;margin-top:-4px;border-top:1px solid #eef0f2}
+.gf-act .pill{border:0;cursor:pointer}
+.gf-act .pill.line{background:#fff;border:1px solid #c9cfd3;color:#333}
 @media print{.report-btn{display:none}}
