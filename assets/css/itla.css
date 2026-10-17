@@ -320,6 +320,7 @@ details.arts>summary:hover{background:var(--petrol-2)}
 .art-metrics b{color:var(--ink);font-weight:600}
 figure.lead{margin:0 0 30px}
 figure.lead img{width:100%;max-height:520px;object-fit:cover}
+figure.lead.portrait img{width:auto;max-width:100%;max-height:640px;margin:0 auto;display:block;object-fit:contain}
 .art h2{font-family:var(--serif);font-weight:400;color:var(--petrol);font-size:1.55rem;line-height:1.25;margin:2em 0 .6em;
   padding-top:.4em;border-top:1px solid var(--line)}
 .art h3{font-family:var(--serif);font-weight:400;color:var(--petrol);font-size:1.18rem;margin:1.6em 0 .4em}
