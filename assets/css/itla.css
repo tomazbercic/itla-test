@@ -225,7 +225,7 @@ details.arts>summary:hover{background:var(--petrol-2)}
 .foot-cols a{display:block;color:#fff;text-decoration:none;font-size:.88rem;margin:7px 0}
 .foot-cols a:hover{text-decoration:underline}
 .foot-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
-.foot-bottom p{margin:0;font-size:.84rem;line-height:1.55}
+.foot-bottom p{margin:0;font-size:.72rem;line-height:1.55;opacity:.85}
 .foot-logos{display:flex;flex-wrap:wrap;align-items:flex-end;gap:24px 44px}
 .foot-logos img{height:68px;width:auto}
 .foot-logos img.zen{height:44px;filter:brightness(0) invert(1)}
