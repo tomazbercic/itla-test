@@ -607,3 +607,22 @@ details.arts[open] .hd{display:inline}
 details.arts .editorial{background:#fff;border:0;margin:18px 16px 0;padding:22px 26px;max-width:1120px}
 details.arts .editorial .ed-main h3{font-size:1.35rem}
 @media (max-width:860px){details.arts .editorial{margin:14px 12px 0;padding:18px}}
+
+/* Report an error */
+.report-btn{position:fixed;right:18px;bottom:18px;z-index:40;border:0;border-radius:999px;background:#fff;color:var(--petrol);
+  font:500 .82rem/1 var(--sans,inherit);padding:10px 14px;box-shadow:0 2px 10px rgba(0,0,0,.18);cursor:pointer}
+.report-btn:hover{background:var(--petrol);color:#fff}
+dialog.report{border:0;border-radius:6px;padding:0;width:min(520px,calc(100vw - 32px));box-shadow:0 10px 40px rgba(0,0,0,.3)}
+dialog.report::backdrop{background:rgba(0,40,60,.45)}
+.report-form{padding:26px 28px;display:flex;flex-direction:column;gap:14px}
+.report-form h3{margin:0;font-family:var(--serif);font-weight:400;font-size:1.5rem;color:var(--petrol)}
+.report-hint{margin:0;font-size:.92rem;color:#555}
+.report-form label{display:flex;flex-direction:column;gap:6px;font-size:.88rem;font-weight:600}
+.report-form label i{font-style:normal;font-weight:400;color:#666}
+.report-form textarea,.report-form input{font:inherit;font-weight:400;border:1px solid #c9cfd3;border-radius:4px;padding:9px 10px;width:100%;box-sizing:border-box}
+.report-form .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.report-msg{margin:0;min-height:1.2em;font-size:.9rem;color:var(--petrol)}
+.report-act{display:flex;justify-content:flex-end;gap:10px}
+.report-act .pill{border:0;cursor:pointer}
+.report-act .pill.line{background:#fff;border:1px solid #c9cfd3;color:#333}
+@media print{.report-btn{display:none}}
