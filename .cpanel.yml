@@ -2,4 +2,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/itla/public_html/
-    - /bin/rsync -a --delete --exclude='.git' --exclude='.cpanel.yml' --exclude='.well-known' --exclude='cgi-bin' ./ $DEPLOYPATH
+    - /bin/rm -rf ${DEPLOYPATH}css ${DEPLOYPATH}scripts ${DEPLOYPATH}images ${DEPLOYPATH}muse_manifest.xml ${DEPLOYPATH}autoloader.php ${DEPLOYPATH}publications.html ${DEPLOYPATH}tmp_*.zip
+    - /usr/bin/find . -mindepth 1 -maxdepth 1 ! -name .git ! -name .cpanel.yml -exec /bin/cp -R {} $DEPLOYPATH \;
